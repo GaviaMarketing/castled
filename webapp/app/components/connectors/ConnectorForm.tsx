@@ -221,7 +221,7 @@ const ConnectorForm = ({
             />}
             <InputField type="hidden" name="config.type" title="Type" />
             {loading && <div className="mt-n5">
-              {category === "App" && <LoadingInput />}
+              {category === "App" && <LoadingInput n={2}/>}
               {category === "Warehouse" && <LoadingInput n={4} />}
             </div>}
           </div>
