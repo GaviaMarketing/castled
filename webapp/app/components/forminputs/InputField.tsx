@@ -5,6 +5,10 @@ import { InputBaseProps } from "@/app/common/dtos/InputBaseProps";
 import { AxiosResponse } from "axios";
 import { DataFetcherResponseDto } from "@/app/common/dtos/DataFetcherResponseDto";
 import TextareaAutosize from "react-textarea-autosize";
+// import CodeInput from "./CodeInput";
+import dynamic from 'next/dynamic'
+
+const DynamicCodeComponent = dynamic(() => import('./CodeInput'))
 
 export interface InputFieldProps extends InputBaseProps {
   type: string;
@@ -82,6 +86,23 @@ function getInput(
           "required-field": meta.touched && meta.error,
         })}
         defaultValue={field.value}
+      />
+    );
+  } else if (props.type === "code") {
+    return (
+      <DynamicCodeComponent
+        field={field}
+        props={props}
+        onChange={(value: string) => {
+          field.onChange(value);
+          onChange?.(value);
+        }}
+        className={cn(props.inputClassName, "form-control", {
+          "required-field": meta.touched && meta.error,
+        })}
+        editable={props.editable}
+        value={props.value}
+        height={props.height}
       />
     );
   } else {
