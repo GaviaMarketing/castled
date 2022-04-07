@@ -1,14 +1,14 @@
 @import "../node_modules/bootstrap-avatar/dist/avatar";
 @import "./variables-custom";
 @import "./variables-light";
-// @import "./variables-dark";
+@import "./variables-dark";
 @import "./bootstrap-custom";
 @import "./light";
 @import "./colors";
 
-// @include color-scheme-alt(alternative-color-scheme($default-color-scheme)) {
-//   @import "./dark";
-// }
+@include color-scheme-alt(alternative-color-scheme($default-color-scheme)) {
+  @import "./dark";
+}
 
 @import "../node_modules/nprogress/nprogress";
 @import "../node_modules/react-notifications-component/dist/theme";
@@ -29,7 +29,7 @@ body {
 }
 
 .horizontal-line span {
-  background: #fff;
+  background: $body-bg;
   padding: 0 0.5rem;
   position: relative;
   z-index: 1;
